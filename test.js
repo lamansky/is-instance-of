@@ -53,6 +53,24 @@ describe('isInstanceOf()', function () {
     assert(isInstanceOf([], 'array', {ci: true}))
   })
 
+  it('should consider a class to be an instance of itself', function () {
+    assert(isInstanceOf(Error, Error))
+    assert(isInstanceOf(Array, Array))
+  })
+
+  it('should consider a class to be an instance of its own name', function () {
+    assert(isInstanceOf(Error, 'Error'))
+    assert(isInstanceOf(Array, 'Array'))
+  })
+
+  it('should consider a child class to be an instance of its parent', function () {
+    assert(isInstanceOf(TypeError, Error))
+  })
+
+  it('should consider a child class to be an instance of its parent name', function () {
+    assert(isInstanceOf(TypeError, 'Error'))
+  })
+
   it('should return false if no class provided', function () {
     assert(!isInstanceOf(new Date()))
   })
