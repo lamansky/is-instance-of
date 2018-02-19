@@ -1,6 +1,6 @@
 {
   "name": "is-instance-of",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Like instanceof, but uses class name strings.",
   "keywords": [
     "object",
