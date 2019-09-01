@@ -21,6 +21,7 @@ module.exports = sbo(function isInstanceOf (x, classes, {ci = false} = {}) {
       case 'string':
         if (!isFunc(x) && ci('Array') === cls) return Array.isArray(x)
         return actualClassNames.includes(cls)
+      case 'undefined': return false
       default: throw new TypeError('Class must be a function or a name string')
     }
   })

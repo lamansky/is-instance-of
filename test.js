@@ -79,6 +79,11 @@ describe('isInstanceOf()', function () {
     assert.strictEqual(isInstanceOf('not an object', String), false)
   })
 
+  it('should ignore `undefined` in the classes list', function () {
+    assert.strictEqual(isInstanceOf(new Date(), [undefined, Error, Date]), true) // eslint-disable-line no-undefined
+    assert.strictEqual(isInstanceOf(new Date(), [undefined]), false) // eslint-disable-line no-undefined
+  })
+
   it('should support the bind operator', function () {
     assert.strictEqual(isInstanceOf.call(new Date(), Date), true)
   })
