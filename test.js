@@ -7,79 +7,79 @@ const globalDate = Date
 
 describe('isInstanceOf()', function () {
   it('should return true for instance of a single class', function () {
-    assert(isInstanceOf(new Date(), Date))
+    assert.strictEqual(isInstanceOf(new Date(), Date), true)
   })
 
   it('should return false if not instance of a single class', function () {
-    assert(!isInstanceOf(new Date(), Error))
+    assert.strictEqual(isInstanceOf(new Date(), Error), false)
   })
 
   it('should return true for instance of a single named class', function () {
-    assert(isInstanceOf(new Date(), 'Date'))
+    assert.strictEqual(isInstanceOf(new Date(), 'Date'), true)
   })
 
   it('should return false if not instance of a single named class', function () {
-    assert(!isInstanceOf(new Date(), 'Error'))
+    assert.strictEqual(isInstanceOf(new Date(), 'Error'), false)
   })
 
   it('should return true for instance of one of provided classes', function () {
-    assert(isInstanceOf(new Date(), [Error, Date]))
+    assert.strictEqual(isInstanceOf(new Date(), [Error, Date]), true)
   })
 
   it('should return false if not instance of any of provided classes', function () {
-    assert(!isInstanceOf(new Date(), [Error, TypeError]))
+    assert.strictEqual(isInstanceOf(new Date(), [Error, TypeError]), false)
   })
 
   it('should return true for instance of a single named user class', function () {
     class Test {}
-    assert(isInstanceOf(new Test(), 'Test'))
+    assert.strictEqual(isInstanceOf(new Test(), 'Test'), true)
   })
 
   it('should consider identically-named classes to be the same', function () {
-    class Date {}
-    assert(isInstanceOf(new Date(), globalDate))
+    class Date {} // eslint-disable-line no-shadow
+    assert.strictEqual(isInstanceOf(new Date(), globalDate), true)
   })
 
   it('should make comparisons case-insensitively if `ci` is true', function () {
     class date {}
-    assert(!isInstanceOf(new date(), globalDate)) // eslint-disable-line new-cap
-    assert(isInstanceOf(new date(), globalDate, {ci: true})) // eslint-disable-line new-cap
+    assert.strictEqual(isInstanceOf(new date(), globalDate), false) // eslint-disable-line new-cap
+    assert.strictEqual(isInstanceOf(new date(), globalDate, {ci: true}), true) // eslint-disable-line new-cap
   })
 
   it('should consider array primitives to be instances of Array', function () {
-    assert(isInstanceOf([], Array))
-    assert(isInstanceOf([], 'Array'))
-    assert(!isInstanceOf([], 'array'))
-    assert(isInstanceOf([], 'array', {ci: true}))
+    assert.strictEqual(isInstanceOf([], Array), true)
+    assert.strictEqual(isInstanceOf([], 'Array'), true)
+    assert.strictEqual(isInstanceOf([], 'array'), false)
+    assert.strictEqual(isInstanceOf([], 'array', {ci: true}), true)
   })
 
   it('should consider a class to be an instance of itself', function () {
-    assert(isInstanceOf(Error, Error))
-    assert(isInstanceOf(Array, Array))
+    assert.strictEqual(isInstanceOf(Error, Error), true)
+    assert.strictEqual(isInstanceOf(Array, Array), true)
   })
 
   it('should consider a class to be an instance of its own name', function () {
-    assert(isInstanceOf(Error, 'Error'))
-    assert(isInstanceOf(Array, 'Array'))
+    assert.strictEqual(isInstanceOf(Error, 'Error'), true)
+    assert.strictEqual(isInstanceOf(Array, 'Array'), true)
   })
 
   it('should consider a child class to be an instance of its parent', function () {
-    assert(isInstanceOf(TypeError, Error))
+    assert.strictEqual(isInstanceOf(TypeError, Error), true)
   })
 
   it('should consider a child class to be an instance of its parent name', function () {
-    assert(isInstanceOf(TypeError, 'Error'))
+    assert.strictEqual(isInstanceOf(TypeError, 'Error'), true)
   })
 
   it('should return false if no class provided', function () {
-    assert(!isInstanceOf(new Date()))
+    assert.strictEqual(isInstanceOf(new Date()), false)
   })
 
   it('should return false for a non-object', function () {
-    assert(!isInstanceOf('not an object', String))
+    assert.strictEqual(isInstanceOf('not an object', String), false)
   })
 
   it('should support the bind operator', function () {
-    assert(isInstanceOf.call(new Date(), Date))
+    assert.strictEqual(isInstanceOf.call(new Date(), Date), true)
   })
 })
