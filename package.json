@@ -17,7 +17,7 @@
   "main": "index.js",
   "files": [],
   "engines": {
-    "node": ">=6.0.0"
+    "node": ">=6"
   },
   "dependencies": {
     "@lamansky/flatten": "^1.0.0",
@@ -25,12 +25,12 @@
     "case-insensitive": "^1.0.0",
     "class-chain": "^1.0.0",
     "is-obj": "^1.0.1",
-    "qfn": "^1.0.0",
-    "sbo": "^1.0.0"
+    "qfn": "^1.0.1",
+    "sbo": "^1.1.0"
   },
   "devDependencies": {
-    "eslint-config-lamansky": "^1.0.0",
-    "mocha": "^5.0.0"
+    "eslint-config-lamansky": "^2.0.0",
+    "mocha": "^6.2.0"
   },
   "scripts": {
     "test": "mocha"
