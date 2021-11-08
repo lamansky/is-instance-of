@@ -1,18 +1,18 @@
-'use strict'
+import arrify from 'arrify'
+import chain from 'class-chain'
+import caseInsensitive from 'case-insensitive'
+import flatten from '@lamansky/flatten'
+import isObject from 'is-obj'
+import qfn from 'qfn'
+import sbo from 'sbo'
 
-const arrify = require('arrify')
-const classChain = require('class-chain')
-const caseInsensitive = require('case-insensitive')
-const flatten = require('@lamansky/flatten')
+const {names} = chain
 const isFunc = x => typeof x === 'function'
-const isObject = require('is-obj')
-const qfn = require('qfn')
-const sbo = require('sbo')
 
-module.exports = sbo(function isInstanceOf (x, classes, {ci = false} = {}) {
+export default sbo(function isInstanceOf (x, classes, {ci = false} = {}) {
   if (!isObject(x)) return false
   ci = qfn(caseInsensitive, ci)
-  const actualClassNames = ci(classChain.names(x))
+  const actualClassNames = ci(names(x))
   return flatten(arrify(classes)).some(cls => {
     switch (typeof cls) {
       case 'function':
