@@ -1,7 +1,6 @@
 import arrify from 'arrify'
 import chain from 'class-chain'
 import caseInsensitive from 'case-insensitive'
-import flatten from '@lamansky/flatten'
 import isObject from 'is-obj'
 import qfn from 'qfn'
 import sbo from 'sbo'
@@ -13,7 +12,7 @@ export default sbo(function isInstanceOf (x, classes, {ci = false} = {}) {
   if (!isObject(x)) return false
   ci = qfn(caseInsensitive, ci)
   const actualClassNames = ci(names(x))
-  return flatten(arrify(classes)).some(cls => {
+  return arrify(classes).flat(Infinity).some(cls => {
     switch (typeof cls) {
       case 'function':
         if (!isFunc(x) && cls === Array) return Array.isArray(x)

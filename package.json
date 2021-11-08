@@ -21,7 +21,6 @@
   },
   "type": "module",
   "dependencies": {
-    "@lamansky/flatten": "^1.0.0",
     "arrify": "^3.0.0",
     "case-insensitive": "^1.0.0",
     "class-chain": "^1.0.0",
