@@ -17,7 +17,7 @@
   "main": "index.js",
   "files": [],
   "engines": {
-    "node": ">=6"
+    "node": ">=12.20"
   },
   "type": "module",
   "dependencies": {
