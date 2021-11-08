@@ -19,6 +19,7 @@
   "engines": {
     "node": ">=6"
   },
+  "type": "module",
   "dependencies": {
     "@lamansky/flatten": "^1.0.0",
     "arrify": "^3.0.0",
@@ -37,6 +38,7 @@
   },
   "eslintConfig": {
     "extends": "lamansky",
+    "sourceType": "module",
     "env": {
       "mocha": true
     }
