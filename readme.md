@@ -4,7 +4,7 @@ Like [`instanceof`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Refe
 
 ## Installation
 
-Requires [Node.js](https://nodejs.org/) 6.0.0 or above.
+Requires [Node.js](https://nodejs.org/) 12.20.0 or above.
 
 ```bash
 npm i is-instance-of
@@ -29,7 +29,7 @@ The module exports a single function.
 ## Examples
 
 ```javascript
-const isInstanceOf = require('is-instance-of')
+import isInstanceOf from 'is-instance-of'
 
 isInstanceOf(new Date(), 'Date') // true
 isInstanceOf(new Date(), Date) // true

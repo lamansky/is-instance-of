@@ -1,7 +1,5 @@
-'use strict'
-
-const assert = require('assert')
-const isInstanceOf = require('.')
+import assert from 'assert'
+import isInstanceOf from './index.js'
 
 const globalDate = Date
 
